@@ -8,11 +8,11 @@ import { Satellite } from '../satellite';
 })
 export class OrbitCountsComponent implements OnInit {
   @Input() satellites: Satellite[];
-  typesArr: any[] = ['Space Debris','Communication','Probe','Positioning','Space Station','Telescope'];
+  typesArr: any[] = [];
   countArr: any[] = [];
   constructor() {}
 
-
+// typecount no longer used ↓↓↓↓↓
   typeCount(type) {
     let count: number = 0;
     if (type === 'space debris') {
@@ -70,6 +70,14 @@ export class OrbitCountsComponent implements OnInit {
     }
   }
 
+  typesArrBuilder(){
+    for (let i = 0; i < this.satellites.length; i++){
+      if (!this.typesArr.includes(this.satellites[i].type)){
+        this.typesArr.push(this.satellites[i].type)
+      }
+    }
+
+}
   counter(){
     let count: number = 0;
     this.countArr = [];
