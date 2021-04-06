@@ -9,6 +9,6 @@
     <div>Telescope: <span>{{typeCount('telescope')}}</span></div>
 </div> -->
 <div class="counts" (onload)="counter()">
-    <div>Total: <span>{{satellites.length}} {{typesArrBuilder()}} {{counter()}}</span></div>
-    <div *ngFor="let type of typesArr;let i =index">Total {{type}}:<span>{{countArr[i]}}</span></div>
+    <div>Total: <span>{{satellites.length}} {{typesArrBuilder()}} {{counter2()}}</span></div>
+    <div *ngFor="let type of typesArr;let i = index">Total {{type}}:<span>{{countArr[i]}}</span></div>
 </div>
