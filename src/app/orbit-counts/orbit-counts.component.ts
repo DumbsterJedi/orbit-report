@@ -8,15 +8,14 @@ import { Satellite } from '../satellite';
 })
 export class OrbitCountsComponent implements OnInit {
   @Input() satellites: Satellite[];
-  typesArr: string[] = [];
+  typesArr: any[] = ['Space Debris','Communication','Probe','Positioning','Space Station','Telescope'];
+  countArr: any[] = [];
   constructor() {}
 
-  ngOnInit(): void {}
 
-  typeCount(type: string) {
+  typeCount(type) {
     let count: number = 0;
-
-    if (type == 'space debris') {
+    if (type === 'space debris') {
       for (let i = 0; i < this.satellites.length; i++) {
         if (this.satellites[i].type.toLowerCase() == 'space debris') {
           count++;
@@ -24,11 +23,12 @@ export class OrbitCountsComponent implements OnInit {
       }
       return count;
     }
-
-    if (type == 'communication') {
+    
+    if (type === 'communication') {
       for (let i = 0; i < this.satellites.length; i++) {
         if (this.satellites[i].type.toLowerCase() == 'communication') {
           count++;
+          console.log(count);
         }
       }
       return count;
@@ -70,12 +70,71 @@ export class OrbitCountsComponent implements OnInit {
     }
   }
 
-  typesCounter(){
-    for(let i = 0; i < this.satellites.length; i++){
-      if(!this.typesArr.includes(this.satellites[i].type)){
-        this.typesArr.push(this.satellites[i].type)
+  counter(){
+    let count: number = 0;
+    this.countArr = [];
+
+for(let s = 0; s < this.typesArr.length; s++){
+count = 0;
+    if (this.typesArr[s] === 'Space Debris') {
+      for (let i = 0; i < this.satellites.length; i++) {
+        if (this.satellites[i].type.toLowerCase() == 'space debris') {
+          count++;
+        }
       }
+      this.countArr.push(count);
+    }
+    
+    else if (this.typesArr[s] === 'Communication') {
+      for (let i = 0; i < this.satellites.length; i++) {
+        if (this.satellites[i].type.toLowerCase() == 'communication') {
+          count++;
+        }
+      }
+      this.countArr.push(count);
+    }
+
+    else if (this.typesArr[s] == 'Probe') {
+      for (let i = 0; i < this.satellites.length; i++) {
+        if (this.satellites[i].type.toLowerCase() == 'probe') {
+          count++;
+        }
+      }
+      this.countArr.push(count);
+    }
+
+   else if (this.typesArr[s] == 'Positioning') {
+      for (let i = 0; i < this.satellites.length; i++) {
+        if (this.satellites[i].type.toLowerCase() == 'positioning') {
+          count++;
+        }
+      }
+      this.countArr.push(count);
+    }
+
+   else if (this.typesArr[s] == 'Space Station') {
+      for (let i = 0; i < this.satellites.length; i++) {
+        if (this.satellites[i].type.toLowerCase() == 'space station') {
+          count++;
+        }
+      }
+      this.countArr.push(count);
+    }
+
+   else if (this.typesArr[s] == 'Telescope') {
+      for (let i = 0; i < this.satellites.length; i++) {
+        if (this.satellites[i].type.toLowerCase() == 'telescope') {
+          count++;
+        }
+      }
+      this.countArr.push(count);
     }
   }
+
+}
+  
+
+
+ngOnInit(): void {}
 
 }
